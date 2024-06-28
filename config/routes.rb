@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api, module: "legacy_api" do
     scope :v1 do
-      resource :domains, only: [:create] do
+      resource :domains, only: [:create, :destroy, :update] do
         post :check
       end
     end

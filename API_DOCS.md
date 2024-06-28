@@ -14,6 +14,8 @@ Additionally, include a `Content-Type: application/json` header.
 
 - `POST /api/v1/domains` - Creates a new domain.
 - `POST /api/v1/domains/check` - Checks a domain's DNS.
+- `PUT /api/v1/domains/check` - Updates domain's attributes.
+- `DELETE /api/v1/domains` -  Delets the domain.
 
 Both endpoints accept JSON with the `name` parameter, which is the domain name:
 
@@ -26,10 +28,19 @@ json
 
 **Example request:**
 
-```
-sh
+```sh
 curl --location 'YOUR_POSTAL_URL/api/v1/domains' \
---header 'X-Server-API-Key: GYQSvSnU0VKGUeAAZ698gD6Z' \
+--header 'X-Server-API-Key: YOUR_POSTAL_URL' \
 --header 'Content-Type: application/json' \
 --data '{ "name": "example.com" }'
+```
+
+```sh
+curl --location --request PUT 'YOUR_POSTAL_URL/api/v1/domains' \
+--header 'x-server-api-key: YOUR_POSTAL_URL' \
+--header 'content-type: application/json' \
+--data '{
+"name": "example1.com",
+"domain": {"name": "example1.com"}
+}'
 ```
